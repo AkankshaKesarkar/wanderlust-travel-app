@@ -3,12 +3,32 @@ const BASE_URL = 'https://api.pexels.com/v1';
 
 const cache = new Map();
 
+// Deterministic seed-based beautiful photos — no API key needed
+function getPicsumUrl(query, width, height, index = 0) {
+  const seed = encodeURIComponent(`${query}-${index}`);
+  return `https://picsum.photos/seed/${seed}/${width}/${height}`;
+}
+
+function getFallbackImages(query, count) {
+  return Array.from({ length: count }, (_, i) => ({
+    id: `fallback-${query}-${i}`,
+    url: getPicsumUrl(query, 1200, 800, i),
+    thumb: getPicsumUrl(query, 600, 400, i),
+    small: getPicsumUrl(query, 400, 300, i),
+    alt: query,
+    photographer: 'Picsum Photos',
+    photographerUrl: 'https://picsum.photos',
+  }));
+}
+
 export async function fetchImages(query, perPage = 6) {
   const cacheKey = `${query}-${perPage}`;
   if (cache.has(cacheKey)) return cache.get(cacheKey);
 
   if (!API_KEY || API_KEY === 'your_pexels_api_key_here') {
-    return getFallbackImages(query, perPage);
+    const fallback = getFallbackImages(query, perPage);
+    cache.set(cacheKey, fallback);
+    return fallback;
   }
 
   try {
@@ -16,11 +36,14 @@ export async function fetchImages(query, perPage = 6) {
       `${BASE_URL}/search?query=${encodeURIComponent(query)}&per_page=${perPage}&orientation=landscape`,
       { headers: { Authorization: API_KEY } }
     );
-    if (!response.ok) throw new Error('Pexels API error');
+    if (!response.ok) throw new Error(`Pexels API error: ${response.status}`);
     const data = await response.json();
+    if (!data.photos || data.photos.length === 0) {
+      throw new Error('No photos found');
+    }
     const photos = data.photos.map(p => ({
       id: p.id,
-      url: p.src.large2x,
+      url: p.src.large2x || p.src.large,
       thumb: p.src.medium,
       small: p.src.small,
       alt: p.alt || query,
@@ -30,25 +53,14 @@ export async function fetchImages(query, perPage = 6) {
     cache.set(cacheKey, photos);
     return photos;
   } catch (err) {
-    console.error('Pexels fetch failed:', err);
-    return getFallbackImages(query, perPage);
+    console.warn('Pexels fetch failed, using fallback:', err.message);
+    const fallback = getFallbackImages(query, perPage);
+    cache.set(cacheKey, fallback);
+    return fallback;
   }
 }
 
 export async function fetchSingleImage(query) {
   const results = await fetchImages(query, 1);
   return results[0] || null;
-}
-
-function getFallbackImages(query, count) {
-  const encodedQuery = encodeURIComponent(query);
-  return Array.from({ length: count }, (_, i) => ({
-    id: `fallback-${i}`,
-    url: `https://source.unsplash.com/1600x900/?${encodedQuery}&sig=${i}`,
-    thumb: `https://source.unsplash.com/800x600/?${encodedQuery}&sig=${i}`,
-    small: `https://source.unsplash.com/400x300/?${encodedQuery}&sig=${i}`,
-    alt: query,
-    photographer: 'Unsplash',
-    photographerUrl: 'https://unsplash.com',
-  }));
 }
