@@ -462,6 +462,29 @@ export const destinations = [
       { id: 'wadi-rum', name: 'Wadi Rum Desert', category: 'Adventure', description: 'The Valley of the Moon — just outside Petra, vast pink sand dunes and sandstone pillars under infinite starry skies.' },
     ],
   },
+  {
+    id: 'india',
+    name: 'India',
+    country: 'India',
+    continent: 'Asia',
+    type: 'Cultural',
+    tagline: 'A billion stories, a thousand colours, one unforgettable journey',
+    description: 'India is a continent in a country — an overwhelming, beautiful collision of ancient civilisations, vibrant festivals, spice-laden cuisine and landscapes that swing from Himalayan peaks to tropical backwaters. From the marble perfection of the Taj Mahal to the spiritual intensity of the Ganges at dawn, nowhere on earth offers this depth of experience.',
+    bestTime: 'October–March (cool and dry across most regions)',
+    language: 'Hindi, English (+ 21 other official languages)',
+    currency: 'Indian Rupee (₹)',
+    timezone: 'IST (UTC+5:30)',
+    weather: { lat: 28.6139, lon: 77.2090 },
+    tags: ['Heritage', 'Culture', 'Spirituality', 'Food', 'Architecture', 'Festivals'],
+    places: [
+      { id: 'taj-mahal', name: 'Taj Mahal', category: 'Landmark', description: 'The world\'s greatest monument to love — a flawless white marble mausoleum built by Emperor Shah Jahan in Agra. Most breathtaking at sunrise when the marble glows pink.' },
+      { id: 'jaipur-city-palace', name: 'Jaipur — The Pink City', category: 'Heritage', description: 'Rajasthan\'s rose-pink capital dazzles with the City Palace, Hawa Mahal\'s 953 latticed windows, and the astronomical marvel of Jantar Mantar.' },
+      { id: 'varanasi-ghats', name: 'Varanasi Ghats', category: 'Shrine', description: 'One of the world\'s oldest living cities and Hinduism\'s holiest site. The evening Ganga Aarti fire ceremony on the riverbanks is profoundly moving.' },
+      { id: 'kerala-backwaters', name: 'Kerala Backwaters', category: 'Nature', description: 'A 900km network of lagoons, lakes and canals fringed by coconut palms. Drift through on a traditional rice-boat houseboat for the ultimate slow travel experience.' },
+      { id: 'goa-beaches', name: 'Goa', category: 'Beach', description: 'India\'s golden coast — Portuguese colonial churches, spice markets, cashew feni and 100km of beaches ranging from party-loud to blissfully quiet.' },
+      { id: 'ladakh', name: 'Ladakh', category: 'Adventure', description: 'The Roof of the World — a high-altitude desert between Himalayan and Karakoram ranges with ancient Buddhist monasteries perched on impossible cliffs and turquoise lakes at 4,500m.' },
+    ],
+  },
 ];
 
 export const getDestinationById = (id) => destinations.find(d => d.id === id);
