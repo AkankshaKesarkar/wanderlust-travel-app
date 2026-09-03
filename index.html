@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- SEO Meta -->
+    <title>Wanderlust — Explore Destinations Around the World</title>
+    <meta name="description" content="Discover destinations around the world with real-time weather, famous places, AI trip planning and a personal travel guide powered by Google Gemini." />
+    <meta name="keywords" content="travel, destinations, trip planner, weather, AI travel guide, explore, adventure" />
+    <meta name="author" content="Wanderlust" />
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Wanderlust — Explore the World" />
+    <meta property="og:description" content="Real-time weather, AI trip planning and curated guides to the world's most stunning destinations." />
+    <meta property="og:type" content="website" />
+    
+    <!-- Theme -->
+    <meta name="theme-color" content="#080c18" />
+    <meta name="color-scheme" content="dark" />
+
+    <!-- Preconnect to external APIs -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.pexels.com" />
+
+    <!-- Skip link style -->
+    <style>
+      .skip-link {
+        position: absolute;
+        top: -100%;
+        left: 1rem;
+        z-index: 9999;
+        padding: 0.75rem 1.5rem;
+        background: #00d4ff;
+        color: #080c18;
+        font-weight: 700;
+        border-radius: 0 0 0.5rem 0.5rem;
+        text-decoration: none;
+        transition: top 0.2s;
+      }
+      .skip-link:focus {
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

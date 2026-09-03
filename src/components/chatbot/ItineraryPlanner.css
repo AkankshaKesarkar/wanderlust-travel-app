@@ -1,0 +1,177 @@
+.itinerary-planner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.itinerary-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.itinerary-reset {
+  flex-shrink: 0;
+}
+
+/* Form */
+.itinerary-form {
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.itinerary-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.itinerary-field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.01em;
+}
+
+.itinerary-field-value {
+  font-size: 1rem;
+  color: var(--color-accent-cyan);
+  font-weight: 800;
+}
+
+.itinerary-field-note {
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+  font-weight: 500;
+}
+
+/* Range slider */
+.itinerary-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+}
+
+.itinerary-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent-cyan), #8b5cf6);
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
+  transition: transform var(--transition-fast);
+}
+
+.itinerary-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.itinerary-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-accent-cyan), #8b5cf6);
+  cursor: pointer;
+  border: none;
+}
+
+.itinerary-range-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--color-text-tertiary);
+}
+
+/* Chips */
+.itinerary-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.itinerary-chip {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--color-border);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.itinerary-chip:hover {
+  background: rgba(0, 212, 255, 0.06);
+  border-color: rgba(0, 212, 255, 0.3);
+  color: var(--color-text-primary);
+}
+
+.itinerary-chip.active {
+  background: var(--color-accent-cyan-dim);
+  border-color: var(--color-accent-cyan);
+  color: var(--color-accent-cyan);
+}
+
+.itinerary-error {
+  font-size: 0.85rem;
+  color: var(--color-accent-rose);
+  padding: var(--space-3);
+  background: rgba(244, 63, 94, 0.08);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(244, 63, 94, 0.2);
+}
+
+.itinerary-generate-btn {
+  width: fit-content;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.itinerary-generate-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Generating state */
+.itinerary-generating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-5);
+  padding: var(--space-12);
+  text-align: center;
+}
+
+.itinerary-generating-text {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 400px;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .itinerary-form {
+    padding: var(--space-5);
+    gap: var(--space-6);
+  }
+}
