@@ -45,6 +45,12 @@ export default function HeroSection() {
       <div className="hero-orb hero-orb-1" aria-hidden="true" />
       <div className="hero-orb hero-orb-2" aria-hidden="true" />
 
+      {/* Flying airplane */}
+      <div className="hero-plane-wrapper" aria-hidden="true">
+        <div className="hero-plane-trail" />
+        <span className="hero-plane">✈</span>
+      </div>
+
       {/* Content */}
       <div className="hero-content container">
         <div className="hero-badge animate-fade-in-down" aria-label="Destination count">
